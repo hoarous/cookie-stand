@@ -1,19 +1,37 @@
 body{
-    background-color:salmon;
+    background-color: #FA8072;
 }
 #hero{
-    font-family: 'Luckiest Guy', cursive;
-    font-size: 72px;
+    font-family: 'Sigmar One', cursive;
+    font-size: 60px;
+    text-align: right;
     color: white;
-    background-image: url("../img/salmon.png"), radial-gradient(cyan,teal);
-    background-color: teal;
+    background-image: url("../img/salmon.png"), radial-gradient(#00FFFF,#008080);
+    background-color: #008080;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    padding-bottom: 100px;
+
+}
+
+h2{
+    font-family: 'Sigmar One', cursive;
+    font-size: 16pt;
+}
+
+div{
     width: 60%;
-    padding: 20px;
-    padding-top: 60px;
     margin-left: auto;
     margin-right: auto;
     border-radius: 16px;
+    padding: 8px;
+}
+
+#stores{
+    background-color: white;
+    color: #008080;
+    margin-top: 8px;
+    border-color: #008080;
+    border-style: solid;
 }

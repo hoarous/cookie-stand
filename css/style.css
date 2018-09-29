@@ -34,4 +34,20 @@ div{
     margin-top: 8px;
     border-color: #008080;
     border-style: solid;
+    border-collapse: collapse;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 8px;
+}
+
+th,td{
+    border: 1px solid #008080;
+    padding: 2px;
+    text-align: right;
+}
+
+#headerRow{
+    writing-mode: vertical-lr;
+    text-orientation: mixed;
 }

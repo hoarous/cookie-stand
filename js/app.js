@@ -5,6 +5,7 @@ var cookieShop = function(storeName, minCustomers, maxCustomers, cookiesPerSale)
     this.min = minCustomers;
     this.max = maxCustomers;
     this.perSale = cookiesPerSale;
+    this.cookieLedger = [];
 }
 
 cookieShop.prototype.hourlyCustomers = function(){
@@ -12,7 +13,7 @@ cookieShop.prototype.hourlyCustomers = function(){
 }
 
 cookieShop.prototype.hourlyCookies = function(){
-    for(var i = 0; i< 15; i++){
+    for(var i = 0; i< 14; i++){
         this.cookieLedger.push(Math.round(this.hourlyCustomers() * this.perSale));
     }
 }
@@ -20,21 +21,20 @@ cookieShop.prototype.hourlyCookies = function(){
 cookieShop.prototype.renderHours = function(){
     this.hourlyCookies();
     var storesContainer = document.getElementById('stores');
-    var headerEl = document.createElement('h2');
-    headerEl.textContent = this.name;
-    storesContainer.appendChild(headerEl);
+    var trEl = document.createElement('tr');
+    storesContainer.appendChild(trEl);
 
-    console.log(headerEl);
-
-    var ulEl = document.createElement('ul');
+    var thEl = document.createElement('th');
+    thEl.textContent = this.name;
+    trEl.appendChild(thEl);
+    console.log(thEl);
 
     for(var i in this.cookieLedger){
-        var listItemEl = document.createElement('li');
-        listItemEl.textContent = this.cookieLedger[i];
-        ulEl.appendChild(listItemEl);
+        var tableDataEl = document.createElement('td');
+        tableDataEl.textContent = this.cookieLedger[i];
+        trEl.appendChild(tableDataEl);
     }
 
-    storesContainer.appendChild(ulEl);
 }
 
 var pikePlace = new cookieShop('First and Pike', 23, 65, 6.3);
@@ -44,6 +44,25 @@ var capHill = new cookieShop('Capitol Hill', 20, 38, 2.3,);
 var alki = new cookieShop('Alki', 2, 16, 4.6);
 
 var renderStores = function(){
+    var storesContainer = document.getElementById('stores');
+    var trEl = document.createElement('tr');
+    storesContainer.appendChild(trEl);
+
+    var thEl = document.createElement('th');
+    thEl.textContent = '';
+    trEl.appendChild(thEl);
+
+    for(var i = 6; i < 20; i++){
+        var tableHeaderEl = document.createElement('th');
+        if(i>12){
+            tableHeaderEl.textContent = i%12 + ':00PM';
+        }
+        else{
+            tableHeaderEl.textContent = i + ':00AM'
+        }
+        trEl.appendChild(tableHeaderEl);
+    }
+
     pikePlace.renderHours();
     seaTac.renderHours();
     seattleCenter.renderHours();

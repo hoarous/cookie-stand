@@ -10,7 +10,9 @@ var cookieShop = function(storeName, minCustomers, maxCustomers, cookiesPerSale)
 
 //calculates a random number of customers for a store during an hour of business
 cookieShop.prototype.hourlyCustomers = function(){
-    return Math.round(Math.random() * this.max) + this.min;
+    var customers =  Math.floor(Math.random() * (this.max - this.min + 1)) + this.min;
+    console.log('-----------', customers);
+    return customers;
 }
 
 //calculates the number of cookies sold in a store for an hour of business
@@ -34,7 +36,6 @@ cookieShop.prototype.renderHours = function(){
     var total = 0;
     thEl.textContent = this.name;
     trEl.appendChild(thEl);
-    console.log(thEl);
 
     for(var i in this.cookieLedger){
         var tableDataEl = document.createElement('td');
@@ -124,5 +125,34 @@ var renderStores = function(){
     renderFooter();
 }
 
+//clears the table
+var clearStores = function(){
+    var storesContainer = document.getElementById('stores');
+    while(storesContainer.firstChild){
+        storesContainer.removeChild(storesContainer.firstChild);
+    }
+}
+
 
 renderStores();
+
+var newStoreForm = document.getElementById('new-store-generator');
+
+var handleMakeStore = function (exampleEvent){
+    exampleEvent.preventDefault();
+    exampleEvent.stopPropagation();
+
+    var storeName = exampleEvent.target['store-name'].value;
+    var maxCustomers = parseInt(exampleEvent.target['max-customers'].value);
+    var minCustomers = parseInt(exampleEvent.target['min-customers'].value);
+    var cookieAvg = parseFloat(exampleEvent.target['avg-cookies'].value);
+
+    storeLocations.push(new cookieShop(storeName, minCustomers, maxCustomers, cookieAvg)); 
+
+    clearStores();
+    console.log('=========================');
+    renderStores();
+}
+
+newStoreForm.addEventListener('submit', handleMakeStore);
+

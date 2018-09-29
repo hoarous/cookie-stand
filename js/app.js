@@ -124,5 +124,33 @@ var renderStores = function(){
     renderFooter();
 }
 
+//clears the table
+var clearStores = function(){
+    var storesContainer = document.getElementById('stores');
+    while(storesContainer.firstChild){
+        storesContainer.removeChild(storesContainer.firstChild);
+    }
+}
+
 
 renderStores();
+
+var newStoreForm = document.getElementById('new-store-generator');
+
+var handleMakeStore = function (exampleEvent){
+    exampleEvent.preventDefault();
+    exampleEvent.stopPropagation();
+
+    var storeName = exampleEvent.target['store-name'].value;
+    var maxCustomers = exampleEvent.target['max-customers'].value;
+    var minCustomers = exampleEvent.target['min-customers'].value;
+    var cookieAvg = exampleEvent.target['avg-cookies'].value;
+
+    storeLocations.push(new cookieShop(storeName, minCustomers, maxCustomers, cookieAvg)); 
+
+    clearStores();
+    renderStores();
+}
+
+newStoreForm.addEventListener('submit', handleMakeStore);
+

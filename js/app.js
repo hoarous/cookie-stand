@@ -16,7 +16,7 @@ cookieShop.prototype.hourlyCustomers = function(){
 //calculates the number of cookies sold in a store for an hour of business
 cookieShop.prototype.hourlyCookies = function(){
     if(!this.cookieLedger.length){
-        for(var i = 0; i< 14; i++){
+        for(var i = 0; i < 15; i++){
             this.cookieLedger.push(Math.round(this.hourlyCustomers() * this.perSale));
         }
     }
@@ -69,7 +69,7 @@ var renderHeader = function(){
     thEl.textContent = '';
     trEl.appendChild(thEl);
 
-    for(var i = 6; i < 20; i++){
+    for(var i = 6; i < 21; i++){
         var tableHeaderEl = document.createElement('th');
         if(i>12){
             tableHeaderEl.textContent = i%12 + ':00PM';
@@ -88,7 +88,30 @@ var renderHeader = function(){
 
 //renders the footer
 var renderFooter = function(){
+    var storesContainer = document.getElementById('stores');
+    var trEl = document.createElement('tr');
+    storesContainer.appendChild(trEl);
 
+    var thEl = document.createElement('th');
+    thEl.textContent = 'Totals';
+    trEl.appendChild(thEl);
+
+    var allStoresTotals = [];
+    var dailyTotal = 0;
+    for(var i = 0; i < 15; i++){
+        allStoresTotals.push(0);
+        var tdEl = document.createElement('td');
+        for(var j = 0; j < storeLocations.length; j++){
+            allStoresTotals[i] += storeLocations[j].cookieLedger[i];
+        }
+        tdEl.textContent = allStoresTotals[i];
+        dailyTotal += allStoresTotals[i];
+        trEl.appendChild(tdEl);
+    }
+
+    var tdEl2 = document.createElement('td');
+    tdEl2.textContent = dailyTotal;
+    trEl.appendChild(tdEl2);
 }
 
 //renders the table

@@ -67,21 +67,22 @@ var renderHeader = function(){
 
     var thEl = document.createElement('th');
     thEl.textContent = '';
+    trEl.id = 'headerRow'
     trEl.appendChild(thEl);
 
     for(var i = 6; i < 21; i++){
         var tableHeaderEl = document.createElement('th');
         if(i>12){
-            tableHeaderEl.textContent = i%12 + ':00PM';
+            tableHeaderEl.textContent = i%12 + ':00 PM';
         }
         else{
-            tableHeaderEl.textContent = i + ':00AM'
+            tableHeaderEl.textContent = i + ':00 AM'
         }
         trEl.appendChild(tableHeaderEl);
     }
 
     var thEl2 = document.createElement('th');
-    thEl2.textContent = 'Daily Location Total:';
+    thEl2.textContent = 'Daily Total:';
     trEl.appendChild(thEl2);
 }
 

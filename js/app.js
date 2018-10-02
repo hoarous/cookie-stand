@@ -38,13 +38,13 @@ cookieShop.prototype.renderHours = function(){
     trEl.appendChild(thEl);
 
     for(var i in this.cookieLedger){
-        var tableDataEl = document.createElement('td');
-        tableDataEl.textContent = this.cookieLedger[i];
-        trEl.appendChild(tableDataEl);
+        var tdEl = document.createElement('td');
+        tdEl.textContent = this.cookieLedger[i];
+        trEl.appendChild(tdEl);
         total += this.cookieLedger[i];
     }
 
-    var tdEl = document.createElement('td');
+    tdEl = document.createElement('td');
     tdEl.textContent = total;
     trEl.appendChild(tdEl);
 
@@ -72,19 +72,19 @@ var renderHeader = function(){
     trEl.appendChild(thEl);
 
     for(var i = 6; i < 21; i++){
-        var tableHeaderEl = document.createElement('th');
+        thEl = document.createElement('th');
         if(i>12){
-            tableHeaderEl.textContent = i%12 + ':00 PM';
+            thEl.textContent = i%12 + ':00 PM';
         }
         else{
-            tableHeaderEl.textContent = i + ':00 AM'
+            thEl.textContent = i + ':00 AM'
         }
-        trEl.appendChild(tableHeaderEl);
+        trEl.appendChild(thEl);
     }
 
-    var thEl2 = document.createElement('th');
-    thEl2.textContent = 'Daily Total:';
-    trEl.appendChild(thEl2);
+    thEl = document.createElement('th');
+    thEl.textContent = 'Daily Total:';
+    trEl.appendChild(thEl);
 }
 
 

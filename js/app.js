@@ -1,11 +1,15 @@
 "use strict";
 
+//declare stores
+var storeLocations = [];
+
 var cookieShop = function(storeName, minCustomers, maxCustomers, cookiesPerSale) {
     this.name = storeName;
     this.min = minCustomers;
     this.max = maxCustomers;
     this.perSale = cookiesPerSale;
     this.cookieLedger = [];
+    storeLocations.push(this);
 }
 
 //calculates a random number of customers for a store during an hour of business
@@ -51,13 +55,11 @@ cookieShop.prototype.renderHours = function(){
 }
 
 
-//declare stores
-var storeLocations = [];
-storeLocations.push(new cookieShop('First and Pike', 23, 65, 6.3));
-storeLocations.push(new cookieShop('SeaTac Airport', 3, 24, 1.2));
-storeLocations.push(new cookieShop('Seattle Center', 11, 38, 3.7,));
-storeLocations.push(new cookieShop('Capitol Hill', 20, 38, 2.3,));
-storeLocations.push(new cookieShop('Alki', 2, 16, 4.6));
+new cookieShop('First and Pike', 23, 65, 6.3);
+new cookieShop('SeaTac Airport', 3, 24, 1.2);
+new cookieShop('Seattle Center', 11, 38, 3.7,);
+new cookieShop('Capitol Hill', 20, 38, 2.3,);
+new cookieShop('Alki', 2, 16, 4.6);
 
 
 //renders the table header
@@ -147,7 +149,7 @@ var handleMakeStore = function (exampleEvent){
     var minCustomers = parseInt(exampleEvent.target['min-customers'].value);
     var cookieAvg = parseFloat(exampleEvent.target['avg-cookies'].value);
 
-    storeLocations.push(new cookieShop(storeName, minCustomers, maxCustomers, cookieAvg)); 
+    new cookieShop(storeName, minCustomers, maxCustomers, cookieAvg); 
 
     clearStores();
     console.log('=========================');

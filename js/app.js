@@ -157,4 +157,3 @@ var handleMakeStore = function (exampleEvent){
 }
 
 newStoreForm.addEventListener('submit', handleMakeStore);
-

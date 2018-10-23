@@ -2,6 +2,7 @@ body{
     background-color: #FA8072;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
+
 #hero{
     font-family: 'Sigmar One', cursive;
     font-size: 60px;
@@ -22,16 +23,14 @@ h2{
 }
 
 div{
-    width: 60%;
-    margin-left: auto;
-    margin-right: auto;
+    width: 960px;
+    margin: 8px auto 8px auto;
     border-radius: 16px;
-    padding: 8px;
 }
 
 form{
     background-color: white;
-    width: 60%;
+    width: 960px;
     color:#008080;
     margin-left: auto;
     margin-right: auto;
@@ -57,7 +56,7 @@ th{
     color: #008080;
     margin-top: 16px;
     border: 3px solid #008080;
-    width: 60%;
+    width: 960px;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 16px;
@@ -70,4 +69,55 @@ legend{
 #headerRow{
     writing-mode: vertical-lr;
     text-orientation: mixed;
+}
+
+
+#links{
+    margin-left: auto;
+    margin-right: auto;
+    width: 960px;
+}
+
+#links > div{
+    font-family: 'Sigmar One', cursive;
+    font-size: 30px;
+    color: #008080;
+    text-shadow: 0px 0px 3px white;
+    background-color: white;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 20px;
+    width: 420px; 
+    /* I swear I didn't do that on purpose */
+    display: inline-block;
+    margin: 8px;
+}
+
+#about{
+    background-image: url("../img/family.jpg");
+}
+
+#menu{
+    background-image: url("../img/chinook.jpg");
+}
+
+#catering{
+    background-image: url("../img/cutter.jpeg");
+}
+
+#about{
+    background-image: url("../img/family.jpg");
+}
+
+#events{
+    background-image: url("../img/fish.jpg");
+}
+
+#merch{
+    background-image: url("../img/shirt.jpg");
+}
+
+#contact{
+    background-image: url("../img/frosted-cookie.jpg");
 }
